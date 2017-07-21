@@ -43,6 +43,9 @@ WORKDIR ${PROJECT_PATH}
 
 ADD requirements.txt ${PROJECT_PATH}
 
+RUN virtualenv -p $(which python3) ${VENV_PATH}
+#RUN ${VENV_PATH}/bin/pip install -r requirements.txt
+
 RUN echo 'db:5432:*:django:django' > ~/.pgpass; \
     chmod 600 ~/.pgpass;
 
